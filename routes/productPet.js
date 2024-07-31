@@ -24,7 +24,7 @@ const productPet = require('../model/ProcductPet');
 router.get('/list', async function(req, res, next) {
     try {
         var data = await productPet.find({});
-        res.status(200).json(data);
+        res.json({status: true, data: data});
       } catch (error) {
         res.status(500).json({mess:"loi"} )
       }
