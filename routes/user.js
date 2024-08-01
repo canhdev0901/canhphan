@@ -81,7 +81,7 @@ router.post('/login',  async function(req, res, next) {
 
     if (user.email === email && user.password === password) {
 
-      const token  = JWT.sign({id: user._id},config.SECRETKEY,{expiresIn:'30s'});
+      const token  = JWT.sign({id: user._id},config.SECRETKEY,{expiresIn:'1d'});
       const refreshToken = JWT.sign({id: user._id},config.SECRETKEY,{expiresIn:'1d'});
 
       return res.status(200).json({ status: true,user: user , token: token,refreshToken:refreshToken});
