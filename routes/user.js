@@ -7,6 +7,47 @@ const config = require("../config");
 const User = require('../model/user');
 const checkToken = require('./checkToken');
 
+/**
+ * @swagger
+ * /user/register:
+ *   post:
+ *     summary: đăng ký
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: email người dùng
+ *               password:
+ *                 type: string
+ *                 description: password người dùng
+ *     responses:
+ *       200:
+ *         description: Trả về thông tin tài khoản
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 product:
+ *                   type: object
+ *                   properties:
+ *                    email:
+ *                      type: string
+ *                      description: email người dùng
+ *                    password:
+ *                      type: string
+ *                      description: password người dùng
+ *       500:
+ *         description: Lỗi server
+ */
 router.post('/register',async function(req, res, next) {
   try {
     const newUser= new User(req.body);

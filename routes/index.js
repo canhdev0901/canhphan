@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var modelCate = require('../model/category');
-var modelProd = require('../model/Product');
+var modelCate = require('../model/CategoryPet');
+var modelProd = require('../model/ProcductPet');
 
 /* GET home page. */
 //http://localhost:3000/
 router.get('/', async function(req, res, next) {
   var _list = await modelProd.find().populate("category");
-  
+  console.log(_list)
   res.render('index', {title: "Quản lý sản phẩm", list: _list });
 });
 
@@ -17,7 +17,7 @@ router.get('/', async function(req, res, next) {
 router.get('/add', async function(req, res, next) {
 
   var listCate = await modelCate.find();
-
+  
   res.render('add', {listCate: listCate});
 });
 
